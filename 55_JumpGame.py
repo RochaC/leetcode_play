@@ -1,46 +1,31 @@
 """
 " File Description:
-" Wrong version
+" Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Determine if you are able to reach the last index.
 "
 " Created by Rocha(chenzhihao) on 2020/5/31.
 """
 
-UNKOWN = 1
-GOOD = 2
-BAD = 3
-
 
 class Solution(object):
-	def canJumpFromN(self, pos, nums, mem):
-		if (mem[pos] != UNKOWN):
-			if (mem[pos] == GOOD):
-				return True
-			else:
-				return False
-
-		step = min(nums[pos], len(nums)-1)
-		for i in range(1, step+1):
-			if (self.canJumpFromN(pos + i, nums, mem)):
-				mem[pos] = GOOD
-				return True
-
-		mem[pos] = BAD
-		return False
-
 	def canJump(self, nums):
 		"""
-		dp top-bottom version, would have stack problem
 		:type nums: List[int]
 		:rtype: bool
 		"""
-		max_l = len(nums)
-		mem = [UNKOWN] * (max_l - 1)
-		mem.append(GOOD)
+		sz = len(nums)
+		fartherst = 0
+		for i in range(sz-1):
+			fartherst = max(fartherst, i+nums[i])
+			if fartherst <= i: return False       # cannot jump
 
-		return self.canJumpFromN(0, nums, mem)
+		return fartherst>=sz-1
 
 
 if __name__ == '__main__':
+	n = [0]
 	so = Solution()
-	nums = 0
-	print(so.canJump(nums))
+	print(so.canJump(n))

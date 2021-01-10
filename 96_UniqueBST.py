@@ -15,16 +15,17 @@ class Solution(object):
 		# catalan tree
 		d = []
 
-		for i in range(n+1):
+		for i in range(n + 1):
 			d.append(0)
-			if i in (0,1):
+			if i in (0, 1):
 				d[i] = 1
 				continue
 			for k in range(i):
-				d[i] += d[k]*d[i-k-1]
+				d[i] += d[k] * d[i - k - 1]
 
 		return d[n]
 
+
 if __name__ == '__main__':
-    so = Solution()
-    print(so.numTrees(5))
+	so = Solution()
+	print(so.numTrees(5))

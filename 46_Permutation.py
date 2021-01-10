@@ -1,6 +1,7 @@
 """
 " File Description:
-" 
+" Given an array nums of distinct integers,
+return all the possible permutations. You can return the answer in any order.
 "
 " Created by Rocha(chenzhihao) on 2020/3/5.
 """
